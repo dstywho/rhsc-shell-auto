@@ -8,8 +8,6 @@ import org.calgb.test.performance.RequestException;
 import org.calgb.test.performance.UseSslException;
 import org.junit.Test;
 
-import com.sun.net.httpserver.HttpsConfigurator;
-
 public class RsdlTest {
 	
 	@Test

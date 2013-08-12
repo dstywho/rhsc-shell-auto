@@ -27,15 +27,20 @@ public class Cluster {
 	@XmlElement(name="data_center")
 	private Datacenter datacenter;
 	
+	@XmlElement(name="version")
 	private Version version;
 	
-	@XmlElement(name="virt_serivce")
-	private boolean virtService;
+	@XmlElement(name="virt_service")
+	private boolean virtService = false;
 	
 	@XmlElement(name="gluster_service")
-	private boolean glusterService;
+	private boolean glusterService = true;
 	
+	@XmlElement(name="cpu")
 	private Cpu cpu;
+	
+	@XmlElement(name="description")
+	private String description;
 	
 	public static Cluster fromResponse(Response response){
 		HashMap<String, String> attributes = StringUtils.keyAttributeToHash(response.toString());
@@ -140,6 +145,21 @@ public class Cluster {
 	 */
 	public void setCpu(Cpu cpu) {
 		this.cpu = cpu;
+	}
+
+	
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public static void main(String[] args) throws JAXBException{
