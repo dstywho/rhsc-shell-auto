@@ -12,6 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
+import com.redhat.qe.config.RhscConfiguration;
 import com.redhat.qe.model.Cluster;
 import com.redhat.qe.model.Datacenter;
 import com.redhat.qe.model.DatacenterList;
@@ -26,7 +27,7 @@ public class TestBase {
 	}
 	@Before
 	public void setup() throws UseSslException{ 
-		session = new HttpSession("rhsc-qa9", 443, HttpProtocol.HTTPS);
+		session = new HttpSession(RhscConfiguration.getConfiguration().getShellHost().getHostname(), 443, HttpProtocol.HTTPS);
 		session.useBasicAuthentication("admin@internal", "redhat");
 	}
 	@After
