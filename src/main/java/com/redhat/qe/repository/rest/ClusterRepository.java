@@ -10,6 +10,7 @@ import org.calgb.test.performance.HttpSession;
 import com.redhat.qe.model.Cluster;
 import com.redhat.qe.model.ClusterList;
 import com.redhat.qe.model.Datacenter;
+import com.redhat.qe.repository.ClusterSerializer;
 
 public class ClusterRepository extends Repository{
 
@@ -23,8 +24,9 @@ public class ClusterRepository extends Repository{
 		return clusterList.getClusters();
 	}
 
-	public ResponseWrapper create(Cluster cluster){
-		HttpPost post = new PostRequestFactory().createPost("/api/clusters",marshall(cluster));
+	public ResponseWrapper create(final Cluster cluster){
+		String xml = new ClusterSerializer().toXml(cluster);
+		HttpPost post = new PostRequestFactory().createPost("/api/clusters", xml);
 		ResponseWrapper response = sendTransaction(post); 
 		response.expectCode(201);				
 		return response;

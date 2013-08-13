@@ -2,7 +2,6 @@ package com.redhat.qe.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -12,7 +11,9 @@ public class Datacenter {
 	@XmlElement(name="id")
 	private String id;
 	private String name;
-//	private Version version;
+	private Version version;
+	private String description;
+	
 	/**
 	 * @return the id
 	 */
@@ -37,17 +38,30 @@ public class Datacenter {
 	public void setName(String name) {
 		this.name = name;
 	}
-//	/**
-//	 * @return the version
-//	 */
-//	public Version getVersion() {
-//		return version;
-//	}
-//	/**
-//	 * @param version the version to set
-//	 */
-//	public void setVersion(Version version) {
-//		this.version = version;
-//	}
+	/**
+	 * @return the version
+	 */
+	public Version getVersion() {
+		return version;
+	}
+	/**
+	 * @param version the version to set
+	 */
+	public void setVersion(Version version) {
+		this.version = version;
+	}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
+	
 }

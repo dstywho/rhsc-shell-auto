@@ -1,9 +1,13 @@
 package com.redhat.qe.repository.rest;
 
+import java.util.ArrayList;
+
 import org.apache.http.client.methods.HttpGet;
 import org.calgb.test.performance.HttpSession;
 
+import com.redhat.qe.model.Datacenter;
 import com.redhat.qe.model.DatacenterList;
+import com.redhat.qe.repository.DatacenterXmlParser;
 
 public class DatacenterRepository extends Repository {
 
@@ -11,10 +15,10 @@ public class DatacenterRepository extends Repository {
 		super(session);
 	}
 	
-	public DatacenterList list() {
+	public ArrayList<Datacenter> list() {
 		ResponseWrapper response = sendTransaction(new HttpGet("/api/datacenters")); 
 		response.expectCode(200);
-		return (DatacenterList) unmarshal(response.getBody());
+		return new DatacenterXmlParser().parseDatacenters(response.getBody());
 	}
 
 

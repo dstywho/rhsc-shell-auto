@@ -27,7 +27,7 @@ public class ClusterTest extends TestBase{
 	@Test 
 	public void createTest() throws JAXBException, ProcessResponseBodyException, RequestException, BuildPostException{
 		final Cluster cluster = RhscConfiguration.getConfiguration().getCluster();
-		Datacenter defaultDatacenter = new DatacenterRepository(getSession()).list().getDatacenters().get(0);
+		Datacenter defaultDatacenter = new DatacenterRepository(getSession()).list().get(0);
 		cluster.setDatacenter(defaultDatacenter);
 		getRepository().create(cluster);
 
