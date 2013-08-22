@@ -18,11 +18,11 @@ public class Shell {
 		this.inputReader = inputReader;
 	}	
 	
-	public Response clear(){
+	public IResponse clear(){
 		return new ReadInputFactory().getReadInput(inputReader, fromShell, new Duration(TimeUnit.SECONDS, 1)).clear(); 
 	}
 
-	public Response send(String command) {
+	public IResponse send(String command) {
 		__send(command);
 		return new ReadInputFactory().getReadInput(inputReader, fromShell).read(); 
 	}
