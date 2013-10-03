@@ -26,11 +26,11 @@ public abstract class ReadInput {
 		this(inputStream, new Duration(TimeUnit.SECONDS, 60));
 	}
 	
-	public Response call() {
+	public IResponse call() {
 		return call(true);
 	}
 	
-	public Response call(boolean logoutput) {
+	public IResponse call(boolean logoutput) {
 		long starttime = System.currentTimeMillis();
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
@@ -48,7 +48,7 @@ public abstract class ReadInput {
 		return new Response(getBuffer(), getBufferWithEscapes());
 	}
 	
-	public Response clear() {
+	public IResponse clear() {
 		return call(false);
 	}
 
@@ -77,7 +77,7 @@ public abstract class ReadInput {
 
 	abstract Pattern getPrompt(); 
 	
-	public Response read() {
+	public IResponse read() {
 		return call();
 	}
 

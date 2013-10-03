@@ -20,7 +20,7 @@ import com.redhat.qe.helpers.StringUtils.RepeatingHashMap;
 import com.redhat.qe.repository.GlusterOption;
 import com.redhat.qe.repository.GlusterOptionValue;
 import com.redhat.qe.repository.rest.JaxbContext;
-import com.redhat.qe.ssh.Response;
+import com.redhat.qe.ssh.IResponse;
 import com.redhat.qe.utils.MyMarshaller;
 
 @XmlAccessorType( XmlAccessType.FIELD )
@@ -110,12 +110,16 @@ public class Volume extends Model{
 	 * @return the status
 	 */
 	public String getStatus() {
+		if(this.status == null)
+			this.status = new Status();
 		return status.getState();
 	}
 	/**
 	 * @param status the status to set
 	 */
 	public void setStatus(String status) {
+		if(this.status == null)
+			this.status = new Status();
 		this.status.setState(status);
 	}
 	/**
@@ -170,7 +174,7 @@ public class Volume extends Model{
 	public void setVolumeOptions(HashMap<GlusterOption, GlusterOptionValue> myvolumeOptions) {
 		this.volumeOptions = myvolumeOptions;
 	}
-	public static Volume fromResponse(Response response) {
+	public static Volume fromResponse(IResponse response) {
 		return fromResponse(response.toString());
 	}
 	
